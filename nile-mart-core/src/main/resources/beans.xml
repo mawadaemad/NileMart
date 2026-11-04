@@ -17,4 +17,14 @@
         <constructor-arg ref="standardPricing"/>
         <constructor-arg ref="inMemoryRepo"/>
     </bean>
+
+    <bean id="zoneShippingCalculator" class="org.route.ZoneShippingCalculator"/>
+
+    <bean id="freeShipping" class="org.route.FreeShippingCalculator"/>
+
+    <bean id="shippingQuoteService" class="org.route.ShippingQuoteService">
+        <constructor-arg ref="zoneShippingCalculator"/>
+        <constructor-arg ref="freeShipping"/>
+        <constructor-arg value="5000.00"/>
+    </bean>
 </beans>
