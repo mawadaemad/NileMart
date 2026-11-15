@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+    <style th:fragment="styles">
+        body { font-family: Arial, sans-serif; margin: 0 40px 40px; background-color: #f5f5f5; }
+        h1 { color: #333; }
+        .menu { background: #333; margin: 0 -40px 30px; padding: 14px 40px; }
+        .menu a { color: white; text-decoration: none; margin-right: 24px; font-weight: bold; }
+        .menu a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #333; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        form { background: white; padding: 20px; max-width: 480px; border: 1px solid #ddd; }
+        .field { margin-bottom: 16px; }
+        .field label { display: block; font-weight: bold; margin-bottom: 4px; }
+        .field input[type=text], .field select { width: 100%; padding: 8px; box-sizing: border-box; }
+        .field label.inline { display: inline; font-weight: normal; }
+        .error { color: #c0392b; font-size: 0.9em; display: block; margin-top: 4px; }
+        .actions { margin-bottom: 16px; }
+        .button, button { background: #333; color: white; border: 0; padding: 9px 16px; cursor: pointer; text-decoration: none; }
+    </style>
+</head>
+<body>
+<nav class="menu" th:fragment="menu">
+    <a th:href="@{/products}">Products</a>
+    <a th:href="@{/categories}">Categories</a>
+    <a th:href="@{/brands}">Brands</a>
+</nav>
+</body>
+</html>

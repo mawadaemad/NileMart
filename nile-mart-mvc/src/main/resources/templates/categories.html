@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nile Mart - Categories</title>
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
+</head>
+<body>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+
+<h1>Categories</h1>
+<p class="actions"><a class="button" th:href="@{/categories/new}">Add category</a></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Parent</th>
+        <th>Order</th>
+        <th>Active</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.displayName}"></td>
+        <td th:text="${category.slug}"></td>
+        <td th:text="${category.parentName}"></td>
+        <td th:text="${category.displayOrder}"></td>
+        <td th:text="${category.active ? 'Yes' : 'No'}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

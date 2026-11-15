@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nile Mart - New brand</title>
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
+</head>
+<body>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+
+<h1>New Brand</h1>
+
+<form th:action="@{/brands}" th:object="${brand}" method="post">
+    <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}">
+        <span class="error" th:each="err : ${#fields.errors('name')}" th:text="${err}"></span>
+    </div>
+    <div class="field">
+        <label for="slug">Slug</label>
+        <input type="text" id="slug" th:field="*{slug}">
+        <span class="error" th:each="err : ${#fields.errors('slug')}" th:text="${err}"></span>
+    </div>
+    <div class="field">
+        <input type="checkbox" id="active" th:field="*{active}">
+        <label class="inline" for="active">Active</label>
+    </div>
+    <button type="submit">Save brand</button>
+</form>
+<p><a th:href="@{/brands}">Back to brands</a></p>
+</body>
+</html>

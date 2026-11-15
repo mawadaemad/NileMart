@@ -1,6 +1,7 @@
 package org.route.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
@@ -17,12 +18,17 @@ import java.math.BigDecimal;
 public class Product {
     @NotBlank(message = "SKU can't be empty.")
     private String sku;
-    @NotBlank
+    @NotBlank(message = "Name can't be empty.")
     private String name;
-    @NotBlank
+    /** Slug of a sub-category. */
+    @NotBlank(message = "Category is required.")
     private String category;
+    /** Slug of an active brand; empty or null means no brand. */
+    private String brandSlug;
+    @NotNull(message = "Price is required.")
     @Positive(message = "price must be greater than zero.")
     private BigDecimal price;
-    @PositiveOrZero
+    @NotNull(message = "Stock is required.")
+    @PositiveOrZero(message = "Stock can't be negative.")
     private Integer inStock;
 }

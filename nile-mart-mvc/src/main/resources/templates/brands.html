@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nile Mart - Brands</title>
+    <th:block th:replace="~{fragments/layout :: styles}"></th:block>
+</head>
+<body>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+
+<h1>Brands</h1>
+<p class="actions"><a class="button" th:href="@{/brands/new}">Add brand</a></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Active</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="brand : ${brands}">
+        <td th:text="${brand.name}"></td>
+        <td th:text="${brand.slug}"></td>
+        <td th:text="${brand.active ? 'Yes' : 'No'}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
